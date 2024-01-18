@@ -4,12 +4,40 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+        padawan();
+    }
 
-        magicNumber();
+    static void padawan() {
+        Scanner sc = getScanner("budget");
+        float budget = Float.parseFloat(sc.nextLine());
+        System.out.println("studentCount");
+        int studentCount = Integer.parseInt(sc.nextLine());
+        System.out.println("swordPrice");
+        float swordPrice = Float.parseFloat(sc.nextLine());
+        System.out.println("robePrice");
+        float robePrice = Float.parseFloat(sc.nextLine());
+        System.out.println("beltPrice");
+        float beltPrice = Float.parseFloat(sc.nextLine());
+        int freeBelts = studentCount / 6;
+
+        System.out.println(freeBelts + "\n");
+
+        float robesTotal = robePrice * studentCount;
+        float swordsTotal = (float) (swordPrice * Math.ceil(studentCount * 1.1));
+        float beltTotal = beltPrice * (studentCount - freeBelts);
+
+        float total = robesTotal + swordsTotal + beltTotal;
+
+        if (total < budget) {
+            System.out.printf("The money is enough - it would cost %.2flv.", total);
+        } else {
+            float diff = total - budget;
+            System.out.printf("George Lucas will need %.2flv more.", diff);
+        }
     }
 
     static void magicNumber() {
-        Scanner sc = getScanner();
+        Scanner sc = getScanner("start");
         int start = Integer.parseInt(sc.nextLine());
         System.out.println("end");
         int end = Integer.parseInt(sc.nextLine());
@@ -32,7 +60,7 @@ public class Main {
     }
 
     static void building() {
-        Scanner sc = getScanner();
+        Scanner sc = getScanner("floors");
         int floors = Integer.parseInt(sc.nextLine());
         System.out.println("get rooms");
         int rooms = Integer.parseInt(sc.nextLine());
@@ -57,7 +85,7 @@ public class Main {
     }
 
     static void hollowRectangle() {
-        Scanner sc = getScanner();
+        Scanner sc = getScanner("row");
 
         int row = Integer.parseInt(sc.nextLine());
         int col = Integer.parseInt(sc.nextLine());
@@ -80,9 +108,9 @@ public class Main {
         }
     }
 
-    static Scanner getScanner() {
+    static Scanner getScanner(String message) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("get input");
+        System.out.println(message);
 
         return sc;
     }
