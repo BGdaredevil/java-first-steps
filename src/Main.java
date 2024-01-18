@@ -5,8 +5,30 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        building();
+        magicNumber();
+    }
 
+    static void magicNumber() {
+        Scanner sc = getScanner();
+        int start = Integer.parseInt(sc.nextLine());
+        System.out.println("end");
+        int end = Integer.parseInt(sc.nextLine());
+        System.out.println("magic");
+        int theMagicNum = Integer.parseInt(sc.nextLine());
+        boolean found = false;
+
+        int ranCount = 0;
+        for (int first = start; first <= end; first++) {
+            for (int second = start; second <= end; second++) {
+                ranCount++;
+                if (second + first == theMagicNum) {
+                    System.out.printf("Combination %d - (%d + %d = %d)\n", ranCount, first, second, theMagicNum);
+                    return;
+                }
+            }
+        }
+
+        System.out.printf("%d combinations - neither equals %d\n", ranCount, theMagicNum);
     }
 
     static void building() {
