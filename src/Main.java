@@ -4,7 +4,40 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        padawan();
+
+
+    }
+
+    static void expenses() {
+        Scanner sc = getScanner("lostGames, headset, mouse, keyboard, display\n");
+
+        int lostGames = Integer.parseInt(sc.nextLine());
+        float headsetPrice = Float.parseFloat(sc.nextLine());
+        float mousePrice = Float.parseFloat(sc.nextLine());
+        float keyboardPrice = Float.parseFloat(sc.nextLine());
+        float displayPrice = Float.parseFloat(sc.nextLine());
+
+        float expenses = 0;
+
+        for (int i = 1; i <= lostGames; i++) {
+            if (i % 2 == 0) {
+                expenses += headsetPrice;
+            }
+
+            if (i % 3 == 0) {
+                expenses += mousePrice;
+            }
+
+            if (i % 6 == 0) {
+                expenses += keyboardPrice;
+            }
+
+            if (i % 12 == 0) {
+                expenses += displayPrice;
+            }
+        }
+
+        System.out.printf("Rage expenses: %.2f lv.", expenses);
     }
 
     static void padawan() {
