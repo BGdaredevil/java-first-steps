@@ -5,7 +5,49 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        coinsAndNotes();
+
+
+    }
+
+    static void evenPairs() {
+        Scanner sc = getScanner("startFirstPair");
+        int startFirstPair = sc.nextInt();
+        System.out.println("startSecondPair");
+        int startSecondPair = sc.nextInt();
+        System.out.println("firstPairOffset");
+        int firstPairOffset = sc.nextInt();
+        System.out.println("secondPairOffset");
+        int secondPairOffset = sc.nextInt();
+
+        for (int firstPair = startFirstPair; firstPair <= (startFirstPair + firstPairOffset); firstPair++) {
+            boolean firstIsPrime = primeChecker(firstPair);
+
+            if (firstIsPrime) {
+
+                for (int secondPair = startSecondPair; secondPair <= (startSecondPair + secondPairOffset); secondPair++) {
+                    boolean secondIsPrime = primeChecker(secondPair);
+                    if (secondIsPrime) {
+                        System.out.printf("%d%d\n", firstPair, secondPair);
+                    }
+
+                }
+            }
+
+        }
+
+    }
+
+    static boolean primeChecker(int toCheck) {
+        boolean isPrime = true;
+
+        for (int i = 2; i < toCheck; i++) {
+            if (toCheck % i == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+
+        return isPrime;
     }
 
     static void coinsAndNotes() {
