@@ -5,7 +5,35 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        sumOdds();
 
+    }
+
+    static void sumOdds() {
+        Scanner sc = getScanner("code");
+        int oddCount = Integer.parseInt(sc.nextLine());
+        int sum = 0;
+//        int runs =0;
+//
+//
+//       while (oddCount > 0) {
+//           runs++;
+//           if (runs % 2 == 1) {
+//               System.out.println(runs);
+//               sum += runs;
+//               oddCount--;
+//           }
+//       }
+//
+//        System.out.printf("Sum: %d", sum);
+
+//        second variant ??
+
+        for (int i = 0; i < oddCount; i++) {
+            System.out.println(2 * i + 1);
+            sum += (2 * i + 1);
+        }
+        System.out.printf("Sum: %d%n", sum);
     }
 
     static void expenses() {
