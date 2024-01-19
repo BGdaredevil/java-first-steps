@@ -4,8 +4,47 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+        tree();
+    }
 
-        romboid();
+    static void tree() {
+        Scanner sc = getScanner("size");
+        int size = sc.nextInt();
+
+        int blanks = size - 1;
+        int stars = 1;
+
+        String botRow = " ".repeat(blanks) + "*".repeat(stars);
+
+        for (int i = 0; i < size; i++) {
+            String row = " ".repeat(blanks) + "*".repeat(stars);
+            System.out.println(row);
+            blanks--;
+            stars += 2;
+        }
+
+        System.out.println(botRow);
+    }
+
+    static void romb() {
+        Scanner sc = getScanner("size");
+        int size = sc.nextInt();
+
+        for (int i = 1; i <= size; i++) {
+            int blanks = size - i;
+            int stars = i;
+
+            String row = " ".repeat(blanks) + ("* ".repeat(stars)).trim();
+            System.out.println(row);
+        }
+
+        for (int i = 1; i <= size; i++) {
+            int blanks = i;
+            int stars = size - i;
+
+            String row = " ".repeat(blanks) + ("* ".repeat(stars)).trim();
+            System.out.println(row);
+        }
 
     }
 
@@ -17,8 +56,8 @@ public class Main {
             System.out.println("*" + " *".repeat(i));
         }
 
-        for (int i = 0; i <= size -2; i++) {
-            System.out.println("*" + " *".repeat(size -2 - i));
+        for (int i = 0; i <= size - 2; i++) {
+            System.out.println("*" + " *".repeat(size - 2 - i));
         }
 
     }
