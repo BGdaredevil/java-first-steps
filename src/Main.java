@@ -4,8 +4,74 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+        Scanner sc = getScanner("size");
+        int size = sc.nextInt();
 
-        anotherTree();
+        arrowPattern(size);
+    }
+
+    static void arrowPattern(int size) {
+
+        if (size % 2 == 0) {
+            size--;
+        }
+
+        int blanks = size - 1;
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < size; i++) {
+
+            result.append(" ".repeat(blanks)).append("*").append(" *".repeat(i)).append("\n");
+
+            blanks--;
+        }
+
+        int width = (size - 1) * 2 + 1;
+        int padding = (width - 1) / 2;
+
+        for (int i = 0; i < size; i++) {
+            result.append(" ".repeat(padding / 2)).append("*".repeat(size)).append("\n");
+        }
+
+        System.out.println(result.toString());
+    }
+
+    static void pyramidDigits(int size) {
+        int numberCount = 1;
+        int blanks = size;
+
+        for (int i = 1; i <= size; i++) {
+            StringBuilder row = new StringBuilder().append(" ".repeat(blanks));
+
+            for (int j = 0; j < numberCount; j++) {
+
+                if ((i + j) > numberCount) {
+                    row.append(numberCount + i - 1 - j);
+                    continue;
+                }
+
+                row.append(i + j);
+            }
+            System.out.println(row.toString());
+            numberCount += 2;
+            blanks--;
+        }
+    }
+
+    static void sunglasses(int size) {
+        for (int i = 0; i < size; i++) {
+            if (i == 0 || i == size - 1) {
+                System.out.println("*".repeat(size * 2) + " ".repeat(size) + "*".repeat(size * 2));
+                continue;
+            }
+
+            if (i == ((size - 1) / 2)) {
+                System.out.println("*" + "/".repeat((size * 2 - 2)) + "*" + "|".repeat(size) + "*" + "/".repeat((size * 2 - 2)) + "*");
+                continue;
+            }
+
+            System.out.println("*" + "/".repeat((size * 2 - 2)) + "*" + " ".repeat(size) + "*" + "/".repeat((size * 2 - 2)) + "*");
+        }
     }
 
     static void anotherTree() {
