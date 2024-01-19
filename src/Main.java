@@ -11,13 +11,25 @@ public class Main {
     static void coinsAndNotes() {
         Scanner sc = getScanner("1 lv coins count");
         int coinsOneLv = sc.nextInt();
+        System.out.println("2 lv coins count");
         int coinsTwoLv = sc.nextInt();
+        System.out.println("5 lv coins count");
         int notesFiveLv = sc.nextInt();
+        System.out.println("total cost");
         int cost = sc.nextInt();
 
-
+        for (int oneLvCount = 0; oneLvCount <= coinsOneLv; oneLvCount++) {
+            for (int twoLvCount = 0; twoLvCount <= coinsTwoLv; twoLvCount++) {
+                for (int fiveLvCount = 0; fiveLvCount <= notesFiveLv; fiveLvCount++) {
+                    if ((oneLvCount + twoLvCount * 2 + fiveLvCount * 5) == cost) {
+                        System.out.printf("%d * 1 lv. + %d * 2 lv. + %d * 5 lv. = %d lv.\n", oneLvCount, twoLvCount, fiveLvCount, cost);
+                    }
+                }
+            }
+        }
 
     }
+
     static void getEncoding() {
         Scanner sc = getScanner("get Number");
         String inputNum = sc.nextLine();
