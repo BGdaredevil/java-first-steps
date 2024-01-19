@@ -4,10 +4,110 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = getScanner("size");
-        int size = sc.nextInt();
 
-        hourglass(size);
+        specialNums();
+    }
+
+    static void specialNums() {
+        Scanner sc = getScanner("num");
+        int num = sc.nextInt();
+
+        for (int i = 1111; i <= 9999; i++) {
+            int first = Integer.toString(i).charAt(0) - '0';
+            if (first == 0 || (num % first) != 0) {
+                continue;
+            }
+
+            int second = Integer.toString(i).charAt(1) - '0';
+            if (second == 0 || (num % second) != 0) {
+                continue;
+            }
+
+            int third = Integer.toString(i).charAt(2) - '0';
+            if (third == 0 || (num % third) != 0) {
+                continue;
+            }
+
+            int fourth = Integer.toString(i).charAt(3) - '0';
+
+            if (fourth == 0 || (num % fourth) != 0) {
+                continue;
+            }
+
+            System.out.println(i);
+        }
+    }
+
+    static void passGen() {
+        Scanner sc = getScanner("first");
+        int num = sc.nextInt();
+        System.out.println("second");
+        int second = sc.nextInt();
+
+        for (int one = 1; one <= num; one++) {
+            for (int two = 1; two <= num; two++) {
+                for (int three = 0; three < second; three++) {
+                    for (int four = 0; four < second; four++) {
+                        for (int five = Math.max(one, two); five <= num; five++) {
+                            if (five > Math.max(one, two)) {
+                                System.out.printf("%d%d%c%c%d\n", one, two, (three + 'a'), (four + 'a'), five);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    static void equalSumEvenOdd() {
+        Scanner sc = getScanner("first");
+        int first = sc.nextInt();
+        System.out.println("second");
+        int second = sc.nextInt();
+        boolean found = false;
+
+        for (int i = first; i < second; i++) {
+            String numStr = Integer.toString(i);
+
+            int sumEven = (numStr.charAt(0) - '0') + (numStr.charAt(2) - '0') + (numStr.charAt(4) - '0');
+            int sumOdd = (numStr.charAt(1) - '0') + (numStr.charAt(3) - '0') + (numStr.charAt(5) - '0');
+
+            if (sumEven == sumOdd) {
+                System.out.println(i);
+                found = true;
+            }
+
+        }
+
+        if (!found) {
+            System.out.println("None");
+        }
+    }
+
+    static void leftArrow(int size) {
+        int blanks = size - 2;
+        int stars = 1;
+        boolean switched = false;
+
+        while (stars > 0) {
+            System.out.println(" ".repeat(blanks) + "*".repeat(stars));
+
+            if (blanks == 0 && !switched) {
+                switched = true;
+            }
+
+            if (switched) {
+                blanks++;
+                stars--;
+            } else {
+                blanks--;
+                stars++;
+
+            }
+
+        }
+
     }
 
     static void hourglass(int size) {
@@ -58,30 +158,6 @@ public class Main {
 
         System.out.println(result.toString());
     }
-//        ## ## -- 2
-//        ### # ### -- 5
-//        ##### ##### -- 8
-
-    /*
-     * ##########
-     *  #      #
-     *   #    #
-     *    #  #
-     *     ##
-     *    #  #
-     *   #    #
-     *  #      #
-     * ##########
-     * #######
-     *  #   #
-     *   # #
-     *    #
-     *   # #
-     *  #   #
-     * #######
-     *
-     *
-     * */
 
     static void staircase(int size) {
 
