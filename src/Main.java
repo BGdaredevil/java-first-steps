@@ -5,7 +5,39 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        printPyramid();
+        uniqueCodes();
+
+    }
+
+    static void uniqueCodes() {
+        Scanner sc = getScanner("upperLimitFirst");
+        int upperLimitFirst = sc.nextInt();
+        System.out.println("upperLimitSecond");
+        int upperLimitSecond = sc.nextInt();
+        System.out.println("upperLimitThird");
+        int upperLimitThird = sc.nextInt();
+
+        for (int first = 1; first <= upperLimitFirst; first++) {
+            if (first % 2 == 1) {
+                continue;
+            }
+
+            for (int second = 2; second <= upperLimitSecond; second++) {
+                boolean isPrime = primeChecker(second);
+                if (!isPrime) {
+                    continue;
+                }
+
+                for (int third = 1; third <= upperLimitThird; third++) {
+                    if (third % 2 == 1) {
+                        continue;
+                    }
+
+                    System.out.printf("%d %d %d\n", first, second, third);
+                }
+            }
+        }
+
     }
 
     static void printPyramid() {
@@ -19,7 +51,7 @@ public class Main {
 
             for (int j = 0; j < i; j++) {
                 row = row.concat(count + " ");
-                if (count == num ) {
+                if (count == num) {
                     System.out.println(row);
                     return;
                 }
@@ -27,7 +59,6 @@ public class Main {
             }
 
             System.out.println(row);
-
 
         }
     }
