@@ -4,8 +4,24 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+        printThousandEndingInN();
+    }
 
-        sumOdds();
+    static void printThousandEndingInN() {
+        Scanner sc = getScanner("ending num");
+        int n = Integer.parseInt(sc.nextLine());
+
+
+        for (int i = n; i < 1000; i += 10) {
+            System.out.println(i);
+        }
+
+    }
+
+    static void printThousand() {
+        for (int i = 7; i < 1000; i += 10) {
+            System.out.println(i);
+        }
 
     }
 
