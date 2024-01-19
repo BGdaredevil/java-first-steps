@@ -4,7 +4,51 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        tree();
+
+        anotherTree();
+    }
+
+    static void anotherTree() {
+        Scanner sc = getScanner("size");
+        int size = sc.nextInt();
+        int blanks = size;
+        int stars = 0;
+
+        System.out.println(" ".repeat(blanks) + " |");
+
+        for (int i = 0; i < size; i++) {
+            blanks--;
+            stars++;
+            System.out.println(" ".repeat(blanks) + "*".repeat(stars) + " | " + "*".repeat(stars));
+        }
+
+//             |
+//           * | *
+//          ** | **
+//         *** | ***
+//        **** | ****
+
+    }
+
+    static void squareFrame() {
+        Scanner sc = getScanner("size");
+        int size = sc.nextInt();
+
+        if (size == 1) {
+            System.out.println("+");
+        }
+
+        for (int i = 0; i < size; i++) {
+            if (i == 0 || i == size - 1) {
+                String row = "+" + " - ".repeat(size - 2) + "+";
+                System.out.println(row);
+                continue;
+            }
+            String row = "|" + " - ".repeat(size - 2) + "|";
+            System.out.println(row);
+
+        }
+
     }
 
     static void tree() {
