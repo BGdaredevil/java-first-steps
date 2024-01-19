@@ -5,7 +5,31 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        change();
+        printPyramid();
+    }
+
+    static void printPyramid() {
+        Scanner sc = getScanner("num");
+        int num = sc.nextInt();
+        int count = 1;
+
+        for (int i = 1; i <= num; i++) {
+
+            String row = "";
+
+            for (int j = 0; j < i; j++) {
+                row = row.concat(count + " ");
+                if (count == num ) {
+                    System.out.println(row);
+                    return;
+                }
+                count++;
+            }
+
+            System.out.println(row);
+
+
+        }
     }
 
     static void change() {
