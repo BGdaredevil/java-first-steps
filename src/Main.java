@@ -5,7 +5,32 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        uniqueCodes();
+        romboid();
+
+    }
+
+    static void romboid() {
+        Scanner sc = getScanner("size");
+        int size = sc.nextInt();
+
+        for (int i = 0; i < size; i++) {
+            System.out.println("*" + " *".repeat(i));
+        }
+
+        for (int i = 0; i <= size -2; i++) {
+            System.out.println("*" + " *".repeat(size -2 - i));
+        }
+
+    }
+
+    static void square() {
+        Scanner sc = getScanner("size");
+        int size = sc.nextInt();
+
+        for (int i = 0; i < size; i++) {
+            String row = "*" + " *".repeat(size - 1);
+            System.out.println(row);
+        }
 
     }
 
