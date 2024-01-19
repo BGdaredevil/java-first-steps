@@ -5,7 +5,64 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        change();
+    }
 
+    static void change() {
+        Scanner sc = getScanner("resto?");
+        float change = Float.parseFloat(sc.nextLine());
+
+        int coinCount = 0;
+
+        double twoLv = Math.floor(change / 2);
+        if (twoLv > 0) {
+            coinCount += (int) twoLv;
+            change -= 2 * ((int) twoLv);
+        }
+
+        double oneLv = Math.floor(change);
+        if (oneLv > 0) {
+            coinCount += (int) oneLv;
+            change -= ((int) oneLv);
+        }
+
+        double fiftyCent = Math.floor(change / 0.5);
+        if (fiftyCent > 0) {
+            coinCount += (int) fiftyCent;
+            change -= (float) 0.5 * ((int) fiftyCent);
+        }
+
+        double twentyCent = Math.floor(change / 0.2);
+        if (twentyCent > 0) {
+            coinCount += (int) twentyCent;
+            change -= (float) 0.2 * ((int) twentyCent);
+        }
+
+        double tenCent = Math.floor(change / 0.1);
+        if (tenCent > 0) {
+            coinCount += (int) tenCent;
+            change -= (float) 0.1 * ((int) tenCent);
+        }
+
+        double fiveCent = Math.floor(change / 0.05);
+        if (fiveCent > 0) {
+            coinCount += (int) fiveCent;
+            change -= (float) 0.05 * ((int) fiveCent);
+        }
+
+        double twoCent = Math.floor(change / 0.02);
+        if (twoCent > 0) {
+            coinCount += (int) twoCent;
+            change -= (float) 0.02 * ((int) twoCent);
+        }
+
+        double oneCent = Math.floor(change / 0.01);
+        if (oneCent > 0) {
+            coinCount += (int) oneCent;
+            change -= (float) 0.01 * ((int) oneCent);
+        }
+
+        System.out.println(coinCount);
 
     }
 
