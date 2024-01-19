@@ -7,7 +7,97 @@ public class Main {
         Scanner sc = getScanner("size");
         int size = sc.nextInt();
 
-        arrowPattern(size);
+        hourglass(size);
+    }
+
+    static void hourglass(int size) {
+        StringBuilder result = new StringBuilder();
+        int baseSize = size + 2;
+        int leadingBlanks = 1;
+
+        int switchCond = (int) Math.floor(baseSize / 2 - 1);
+        boolean switched = false;
+
+        result.append("#".repeat(baseSize)).append('\n');
+
+        while (leadingBlanks > 0) {
+            StringBuilder row = new StringBuilder();
+            row.append(" ".repeat(leadingBlanks)).append("#");
+
+            int count = baseSize - 2 - leadingBlanks * 2;
+
+            if (count >= 0) {
+                row.append(" ".repeat(count));
+                row.append("#");
+            }
+
+            row.append("\n");
+
+            result.append(row.toString());
+
+            if (size % 2 == 0) {
+                if (leadingBlanks >= switchCond) {
+                    switched = true;
+                }
+            }
+
+            if (size % 2 == 1) {
+                if (leadingBlanks > switchCond) {
+                    switched = true;
+                }
+            }
+
+            if (switched) {
+                leadingBlanks--;
+            } else {
+                leadingBlanks++;
+            }
+        }
+
+        result.append("#".repeat(baseSize)).append('\n');
+
+        System.out.println(result.toString());
+    }
+//        ## ## -- 2
+//        ### # ### -- 5
+//        ##### ##### -- 8
+
+    /*
+     * ##########
+     *  #      #
+     *   #    #
+     *    #  #
+     *     ##
+     *    #  #
+     *   #    #
+     *  #      #
+     * ##########
+     * #######
+     *  #   #
+     *   # #
+     *    #
+     *   # #
+     *  #   #
+     * #######
+     *
+     *
+     * */
+
+    static void staircase(int size) {
+
+        StringBuilder result = new StringBuilder();
+        int blanks = 0;
+
+        for (int i = 1; i <= size; i++) {
+            String currentHashStr = "#".repeat(i);
+
+            result.append(" ".repeat(blanks));
+            result.append(currentHashStr);
+            result.append("\n");
+
+            blanks += (i - 1);
+        }
+        System.out.println(result.toString());
     }
 
     static void arrowPattern(int size) {
