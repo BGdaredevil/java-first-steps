@@ -4,13 +4,45 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        printThousandEndingInN();
+
+        coinsAndNotes();
+    }
+
+    static void coinsAndNotes() {
+        Scanner sc = getScanner("1 lv coins count");
+        int coinsOneLv = sc.nextInt();
+        int coinsTwoLv = sc.nextInt();
+        int notesFiveLv = sc.nextInt();
+        int cost = sc.nextInt();
+
+
+
+    }
+    static void getEncoding() {
+        Scanner sc = getScanner("get Number");
+        String inputNum = sc.nextLine();
+        int linesToPrint = inputNum.length();
+
+        for (int i = 0; i < linesToPrint; i++) {
+            int digit = inputNum.charAt(linesToPrint - 1 - i) - '0';
+            char symbol = (char) (digit + 33);
+
+            if (digit == 0) {
+                System.out.println("ZERO");
+                continue;
+            }
+
+            String result = new StringBuffer().append(symbol).toString().repeat(digit);
+
+            System.out.println(result);
+
+        }
+
     }
 
     static void printThousandEndingInN() {
         Scanner sc = getScanner("ending num");
         int n = Integer.parseInt(sc.nextLine());
-
 
         for (int i = n; i < 1000; i += 10) {
             System.out.println(i);
