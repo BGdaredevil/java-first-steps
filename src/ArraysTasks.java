@@ -25,8 +25,34 @@ public class ArraysTasks {
 //        processOddNums();
 //        smallestTwo();
 //        productList();
+//        arrayManipulate();
+        getSeq();
 
-        arrayManipulate();
+    }
+
+    private static void getSeq() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("get input");
+
+        int[] input = Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer::parseInt).toArray();
+        int start = 0;
+        int maxLength = 1;
+        int currentLength = 1;
+
+        for (int i = 1; i < input.length; i++) {
+            if (input[i] == input[i - 1]) {
+                currentLength++;
+            } else {
+                currentLength = 1;
+            }
+
+            if (currentLength >= maxLength) {
+                maxLength = currentLength;
+                start = i - currentLength + 1;
+            }
+        }
+
+        System.out.println((input[start] + "").repeat(maxLength));
     }
 
     private static void arrayManipulate() {
