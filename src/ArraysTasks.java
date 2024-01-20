@@ -1,4 +1,7 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class ArraysTasks {
@@ -12,7 +15,122 @@ public class ArraysTasks {
 //        evenOddSubNums();
 //        equalArrs();
 //        condenseArr();
-        printEachNth();
+//        printEachNth();
+//        addRemove();
+//        arrayRotate();
+//        extractNonDecreasing();
+//        rearrange();
+        firstLastK();
+
+    }
+
+    private static void firstLastK() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("getCount");
+        int count = Integer.parseInt(sc.nextLine());
+        System.out.println("getArr");
+        int[] input = Arrays.stream(sc.nextLine().split("\\s*,\\s*")).mapToInt(Integer::parseInt).toArray();
+        int inputLength = input.length;
+        StringBuilder firstLine = new StringBuilder();
+        StringBuilder secondLine = new StringBuilder();
+
+        for (int i = 0; i < count; i++) {
+            firstLine.append(input[i] + " ");
+            secondLine.append(input[inputLength - 1 - i] + " ");
+        }
+
+        System.out.println(firstLine.toString().trim());
+        System.out.println(secondLine.reverse().toString().trim());
+    }
+
+    private static void rearrange() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("get arr");
+
+        int[] inputArr = Arrays.stream(sc.nextLine().split("\\s*,\\s*")).mapToInt(Integer::parseInt).toArray();
+        ArrayList<Integer> result = new ArrayList<Integer>(inputArr.length);
+
+        for (int item : inputArr) {
+            if (item < 0) {
+                result.addFirst(item);
+            } else {
+                result.addLast(item);
+            }
+        }
+
+        for (int item : result) {
+            System.out.println(item);
+        }
+    }
+
+    private static void extractNonDecreasing() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("get arr");
+
+        int[] inputArr = Arrays.stream(sc.nextLine().split("\\s*,\\s*")).mapToInt(Integer::parseInt).toArray();
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        result.add(inputArr[0]);
+        int currentBiggest = inputArr[0];
+
+        for (int i = 1; i < inputArr.length; i++) {
+            int item = inputArr[i];
+
+            if (item > currentBiggest) {
+                currentBiggest = item;
+                result.add(item);
+            }
+        }
+
+        System.out.println(result);
+
+    }
+
+    private static void arrayRotate() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("get arr");
+        ArrayList<String> inputArr = new ArrayList<String>(Arrays.asList(sc.nextLine().split(",")));
+        int rotations = sc.nextInt() % inputArr.size();
+
+        for (int i = 0; i < rotations; i++) {
+            String last = inputArr.removeLast();
+            inputArr.addFirst(last);
+        }
+
+        System.out.println(inputArr);
+    }
+
+    private static void addRemove() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("commands");
+        String[] commands = sc.nextLine().split(",");
+        int startNum = 1;
+        List<Integer> result = new ArrayList<Integer>();
+
+        for (String command : commands) {
+            switch (command) {
+                case "add" -> {
+                    result.add(startNum);
+                    startNum++;
+                }
+                case "remove" -> {
+                    if (!result.isEmpty()) {
+                        result.removeLast();
+                    }
+                }
+            }
+
+        }
+
+        if (result.isEmpty()) {
+            System.out.println("Empty");
+            return;
+        }
+
+        for (int num : result) {
+            System.out.printf("%d ", num);
+        }
+
+        System.out.printf("\n");
     }
 
     private static void printEachNth() {
