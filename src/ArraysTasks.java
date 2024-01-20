@@ -20,7 +20,148 @@ public class ArraysTasks {
 //        arrayRotate();
 //        extractNonDecreasing();
 //        rearrange();
-        firstLastK();
+//        firstLastK();
+//        lastKseq();
+//        processOddNums();
+//        smallestTwo();
+//        productList();
+
+        arrayManipulate();
+    }
+
+    private static void arrayManipulate() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("get input");
+
+        int[] inputArr = Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer::parseInt).toArray();
+        ArrayList<Integer> data = new ArrayList<Integer>(inputArr.length);
+
+        for (int item : inputArr) {
+            data.add(item);
+        }
+
+        System.out.println("get orders");
+        String[] operations = sc.nextLine().split("\\s*,\\s*");
+
+        for (String operation : operations) {
+            String[] opParams = operation.split(" ");
+            switch (opParams[0]) {
+                case "Add": {
+                    data.add(Integer.parseInt(opParams[1]));
+                    break;
+                }
+
+                case "Remove": {
+                    int index = data.indexOf(Integer.parseInt(opParams[1]));
+                    if (index > 0) {
+                        data.remove(index);
+                    }
+
+                    break;
+                }
+
+                case "RemoveAt": {
+                    int index = (Integer.parseInt(opParams[1]));
+                    if (index >= 0 && index < data.size()) {
+                        data.remove(index);
+                    }
+
+                    break;
+                }
+
+                case "Insert": {
+                    int num = (Integer.parseInt(opParams[1]));
+                    int index = (Integer.parseInt(opParams[2]));
+
+                    if (index >= 0 && index < data.size()) {
+                        data.add(index, num);
+                    }
+
+                    break;
+                }
+            }
+        }
+
+        StringBuilder res = new StringBuilder();
+
+        for (int num : data) {
+            res.append(num).append(" ");
+        }
+
+        System.out.println(res.toString());
+    }
+
+    private static void productList() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("get list");
+
+        String[] input = sc.nextLine().split("\\s*,\\s*");
+
+        for (int i = 1; i <= input.length; i++) {
+            System.out.printf("%d.%s\n", i, input[i - 1]);
+        }
+    }
+
+    private static void smallestTwo() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("get arr");
+
+        int[] input = Arrays.stream(sc.nextLine().split("\\s*,\\s*")).mapToInt(Integer::parseInt).toArray();
+        int smallest = Integer.MAX_VALUE;
+        int secondSmallest = Integer.MAX_VALUE;
+
+        for (int inputItem : input) {
+            if (smallest > inputItem) {
+                secondSmallest = smallest;
+                smallest = inputItem;
+            }
+        }
+
+        System.out.printf("%d %d\n", smallest, secondSmallest);
+    }
+
+    private static void processOddNums() {
+        Scanner sc = new Scanner(System.in);
+
+        int[] inputArr = Arrays.stream(sc.nextLine().split("\\s*,\\s*")).mapToInt(Integer::parseInt).toArray();
+        ArrayList<Integer> result = new ArrayList<Integer>();
+
+        for (int i = 1; i < inputArr.length; i += 2) {
+            result.addFirst(inputArr[i] * 2);
+        }
+
+        System.out.println(result);
+    }
+
+    private static void lastKseq() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("get length");
+        int length = sc.nextInt();
+        System.out.println("get count");
+        int count = sc.nextInt();
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        result.add(1);
+
+        for (int i = 1; i < length; i++) {
+            if (result.size() <= count) {
+                int sum = 0;
+
+                for (Integer integer : result) {
+                    sum += integer;
+                }
+                result.add(sum);
+            } else {
+                int sum = 0;
+                List<Integer> subL = result.subList(result.size() - count, result.size());
+
+                for (Integer integer : subL) {
+                    sum += integer;
+                }
+                result.add(sum);
+            }
+        }
+
+        System.out.println(result);
 
     }
 
@@ -35,8 +176,8 @@ public class ArraysTasks {
         StringBuilder secondLine = new StringBuilder();
 
         for (int i = 0; i < count; i++) {
-            firstLine.append(input[i] + " ");
-            secondLine.append(input[inputLength - 1 - i] + " ");
+            firstLine.append(input[i]).append(" ");
+            secondLine.append(input[inputLength - 1 - i]).append(" ");
         }
 
         System.out.println(firstLine.toString().trim());
